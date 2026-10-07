@@ -1,5 +1,34 @@
 "use client";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import type { MouseEvent } from "react";
-export function Hero() { const mx = useMotionValue(0); const my = useMotionValue(0); const sx = useSpring(mx, { stiffness: 70, damping: 18 }); const sy = useSpring(my, { stiffness: 70, damping: 18 }); const rotateX = useTransform(sy, [-.5, .5], [5, -5]); const rotateY = useTransform(sx, [-.5, .5], [-6, 6]); const move = (event: MouseEvent<HTMLElement>) => { const r = event.currentTarget.getBoundingClientRect(); mx.set((event.clientX - r.left) / r.width - .5); my.set((event.clientY - r.top) / r.height - .5); }; return <section className="hero" id="top" onMouseMove={move}><div className="hero-grid" aria-hidden="true" /><div className="hero-glow" aria-hidden="true" /><motion.div className="hero-main" initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: .1 } } }}><motion.div className="hero-kicker" variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}><span /> Digitale Lösungen mit Substanz</motion.div><h1><motion.span variants={{ hidden: { opacity: 0, y: 60 }, show: { opacity: 1, y: 0 } }}>Websites, die</motion.span><motion.span variants={{ hidden: { opacity: 0, y: 60 }, show: { opacity: 1, y: 0 } }}>mehr können als</motion.span><motion.span className="hero-accent" variants={{ hidden: { opacity: 0, y: 60 }, show: { opacity: 1, y: 0 } }}>gut aussehen.</motion.span></h1><motion.div className="hero-bottom" variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}><p>Wir entwickeln Websites, digitale Systeme und individuelle Software, die Unternehmen sichtbar machen, Prozesse verbessern und neue Kunden gewinnen.</p><div className="hero-actions"><a className="button button-primary" href="#anfrage">Projekt anfragen <ArrowUpRight size={19} /></a><a className="button button-ghost" href="#pakete">Pakete ansehen</a></div></motion.div></motion.div><motion.div className="hero-system" style={{ rotateX, rotateY, transformPerspective: 1000 }}><div className="system-ring ring-a" /><div className="system-ring ring-b" /><div className="system-core"><span>DSG</span><small>DIGITAL<br />SYSTEM</small></div><div className="system-node n1">SICHTBARKEIT</div><div className="system-node n2">CONVERSION</div><div className="system-node n3">AUTOMATION</div><svg viewBox="0 0 500 500" aria-hidden="true"><path d="M75 250H180L235 195V105"/><path d="M425 250H320L270 300V405"/><path d="M250 75V145L320 215H405"/></svg></motion.div><a className="scroll-cue" href="#leistungen"><span>Scroll</span><ArrowDownRight /></a></section>; }
+
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+
+const easing = [0.16, 1, 0.3, 1] as const;
+
+export function Hero() {
+  const reduceMotion = useReducedMotion();
+
+  return <section className="hero" id="top">
+    <video className="hero-video" autoPlay={!reduceMotion} muted loop playsInline preload="metadata" poster="/hero-poster.jpg" aria-hidden="true">
+      <source src="/hero-background.mp4" type="video/mp4" />
+    </video>
+    <div className="hero-video-overlay" aria-hidden="true" />
+
+    <motion.p className="hero-studio-name" initial={reduceMotion ? false : { opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8, delay: .15, ease: easing }}>
+      Digital Service Gross
+    </motion.p>
+
+    <motion.div className="hero-editorial" initial={reduceMotion ? false : "hidden"} animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: .1, delayChildren: .22 } } }}>
+      <div className="hero-editorial-copy">
+        <motion.h1 variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: .75, ease: easing } } }}>Websites, Webentwicklung und digitale Systeme für Unternehmen.</motion.h1>
+        <motion.p className="hero-editorial-subline" variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { duration: .65, ease: easing } } }}>Individuell entwickelt. Technisch sauber. Auf Sichtbarkeit, Conversion und Wachstum optimiert.</motion.p>
+        <motion.p className="hero-disciplines" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: .7 } } }}>Webdesign · Entwicklung · SEO · GEO · AEO · CRO · Ads · Software</motion.p>
+      </div>
+
+      <motion.div className="hero-text-links" variants={{ hidden: { opacity: 0, x: 18 }, visible: { opacity: 1, x: 0, transition: { duration: .7, ease: easing } } }}>
+        <motion.a className="hero-primary-link" href="#anfrage" whileHover={{ x: 4 }} transition={{ duration: .25 }}><span>Projekt anfragen</span><ArrowUpRight size={20} /></motion.a>
+        <motion.a className="hero-secondary-link" href="#leistungen" whileHover={{ x: 4 }} transition={{ duration: .25 }}><span>Leistungen ansehen</span><ArrowRight size={17} /></motion.a>
+      </motion.div>
+    </motion.div>
+  </section>;
+}
