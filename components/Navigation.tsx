@@ -55,7 +55,6 @@ export function Navigation() {
         <div className="mega-services">{servicePages.map((service, index) => <motion.div key={service.slug} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .035 * index, duration: .35 }}>
           <Link className={service.slug === "individuelle-software" ? "service-menu-link emphasized" : "service-menu-link"} href={`/${service.slug}`} onClick={() => setServicesOpen(false)}><span className="service-menu-index">{String(index + 1).padStart(2, "0")}</span><span><strong>{service.name}</strong><small>{service.menuText}</small></span><ArrowUpRight size={17} /></Link>
         </motion.div>)}</div>
-        <div className="mega-route" aria-hidden="true"><i /><i /><i /><span>DESIGN</span><span>SEARCH</span><span>SYSTEMS</span></div>
       </motion.div>}
     </AnimatePresence>
 
