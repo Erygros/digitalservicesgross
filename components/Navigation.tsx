@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -51,7 +51,6 @@ export function Navigation() {
 
     <AnimatePresence>
       {servicesOpen && <motion.div id="services-mega-menu" className="mega-menu" initial={{ opacity: 0, y: -14, clipPath: "inset(0 0 100% 0)" }} animate={{ opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" }} exit={{ opacity: 0, y: -8, clipPath: "inset(0 0 100% 0)" }} transition={{ duration: .38, ease: easing }} onMouseEnter={() => setServicesOpen(true)}>
-        <div className="mega-intro"><span>DSG / LEISTUNGEN</span><h2>Digitale Arbeit,<br />sauber verzahnt.</h2><p>Von der sichtbaren Oberfläche bis zum System dahinter.</p><Link href="/#leistungen" onClick={() => setServicesOpen(false)}>Alle Leistungen im Überblick <ArrowRight size={16} /></Link></div>
         <div className="mega-services">{servicePages.map((service, index) => <motion.div key={service.slug} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .035 * index, duration: .35 }}>
           <Link className={service.slug === "individuelle-software" ? "service-menu-link emphasized" : "service-menu-link"} href={`/${service.slug}`} onClick={() => setServicesOpen(false)}><span className="service-menu-index">{String(index + 1).padStart(2, "0")}</span><span><strong>{service.name}</strong><small>{service.menuText}</small></span><ArrowUpRight size={17} /></Link>
         </motion.div>)}</div>
