@@ -3,15 +3,15 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Navigation } from "@/components/Navigation";
 import { Reveal } from "@/components/Reveal";
-import { ArrowUpRight, Bot, Braces, ChartNoAxesCombined, Check, Gauge, Magnet, Search, Wrench } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 
 const services = [
-  { icon: Braces, title: "Webdesign & Entwicklung", text: "Individuell konzipiert, sauber entwickelt und auf das Ziel Ihres Unternehmens ausgerichtet.", tag: "Website" },
-  { icon: Wrench, title: "Bestehende Website verbessern", text: "Technik, Inhalte, Struktur und Conversion gezielt optimieren – ohne funktionierende Bereiche unnötig neu zu bauen.", tag: "Optimierung" },
-  { icon: Search, title: "SEO · GEO · AEO", text: "Für klassische Suche, KI-Antworten und konkrete Fragen sichtbar werden – technisch und redaktionell.", tag: "Sichtbarkeit" },
-  { icon: Gauge, title: "CRO & Performance", text: "Reibung reduzieren, Ladezeiten verbessern und aus Aufmerksamkeit nachvollziehbar mehr Anfragen machen.", tag: "Wirkung" },
-  { icon: ChartNoAxesCombined, title: "Google Ads", text: "Kampagnen, Landingpages und Messbarkeit als zusammenhängendes System statt isolierter Anzeigen.", tag: "Reichweite" },
-  { icon: Magnet, title: "Funnel & Kundenmagnete", text: "Nützliche Einstiege, die Interesse in qualifizierte Kontakte und klare nächste Schritte übersetzen.", tag: "Anfragen" },
+  { title: "Webdesign & Entwicklung", text: "Individuell konzipiert, sauber entwickelt und auf das Ziel Ihres Unternehmens ausgerichtet." },
+  { title: "Bestehende Website verbessern", text: "Technik, Inhalte, Struktur und Conversion gezielt optimieren – ohne funktionierende Bereiche unnötig neu zu bauen." },
+  { title: "SEO · GEO · AEO", text: "Für klassische Suche, KI-Antworten und konkrete Fragen sichtbar werden – technisch und redaktionell." },
+  { title: "CRO & Performance", text: "Reibung reduzieren, Ladezeiten verbessern und aus Aufmerksamkeit nachvollziehbar mehr Anfragen machen." },
+  { title: "Google Ads", text: "Kampagnen, Landingpages und Messbarkeit als zusammenhängendes System statt isolierter Anzeigen." },
+  { title: "Funnel & Kundenmagnete", text: "Nützliche Einstiege, die Interesse in qualifizierte Kontakte und klare nächste Schritte übersetzen." },
 ];
 
 const packages = [
@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <main>
+      <main className="home-page">
         <Hero />
         <section className="statement" aria-label="Positionierung">
           <div className="statement-ambient" aria-hidden="true" />
@@ -60,13 +60,13 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="services section-pad" id="leistungen"><Reveal className="section-heading wide-heading"><p className="kicker">Leistungsspektrum</p><h2>Alles, was zwischen <span>gefunden werden</span> und <span>Auftrag gewinnen</span> passiert.</h2></Reveal><div className="service-grid">
-          {services.map((service, index) => { const Icon = service.icon; return <Reveal key={service.title} className={`service-card service-${index + 1}`} delay={index * .04}><div className="service-meta"><span>{service.tag}</span><Icon size={23} strokeWidth={1.7} /></div><h3>{service.title}</h3><p>{service.text}</p><a href="#anfrage" className="text-link">Details besprechen <ArrowUpRight size={17} /></a></Reveal>; })}
+        <section className="services section-pad" id="leistungen"><Reveal className="section-heading wide-heading"><p className="kicker">Leistungen</p><h2>Von der ersten Idee bis zum System, das im Alltag funktioniert.</h2></Reveal><div className="service-grid">
+          {services.map((service, index) => <Reveal key={service.title} className={`service-card service-${index + 1}`} delay={index * .04}><span className="service-index">0{index + 1}</span><h3>{service.title}</h3><p>{service.text}</p><a href="#anfrage" className="text-link" aria-label={`${service.title} anfragen`}><ArrowUpRight size={18} /></a></Reveal>)}
         </div></section>
 
-        <section className="software section-pad" id="software"><div className="software-orbit" aria-hidden="true"><div className="orbit-core"><Braces /></div><span className="orbit o1">PORTAL</span><span className="orbit o2">AUTOMATION</span><span className="orbit o3">WEBAPP</span><span className="orbit o4">API</span></div><Reveal className="software-copy"><p className="kicker kicker-light">Wenn Standard nicht reicht</p><h2>Individuelle Software, die zu Ihrem Ablauf passt.</h2><p>Webapps, Kundenportale, interne Tools, Automatisierungen, Datenbanken, APIs und sinnvolle KI-Funktionen – exakt für den Prozess entwickelt, den Sie wirklich haben.</p><a className="button button-light" href="#anfrage">Software anfragen <ArrowUpRight size={18} /></a></Reveal></section>
+        <section className="software section-pad" id="software"><Reveal className="software-copy"><p className="kicker kicker-light">Individuelle Software</p><h2>Wenn der Prozess nicht in ein fertiges Produkt passt.</h2><p>Wir entwickeln digitale Werkzeuge entlang Ihrer tatsächlichen Abläufe – von Kundenportalen und Webapps bis zu Automatisierungen und Schnittstellen.</p><a className="editorial-link" href="#anfrage">Software besprechen <ArrowUpRight size={18} /></a></Reveal><Reveal className="software-fields" delay={.1}>{["Webapps und Portale", "Interne Werkzeuge", "Automatisierte Abläufe", "Schnittstellen und Daten"].map((item, index) => <div key={item}><span>0{index + 1}</span><strong>{item}</strong></div>)}</Reveal></section>
 
-        <section className="ai-section section-pad"><Reveal className="ai-title"><Bot size={32} /><p className="kicker">Eine faire Frage</p><h2>„Kann ich meine Website nicht einfach selbst mit KI erstellen?“</h2></Reveal><div className="ai-answer"><Reveal><p className="answer-lead">Ja – Design und Code kann KI heute erstaunlich schnell erzeugen.</p><p>Eine professionelle Website endet aber nicht beim Code. Sie muss erreichbar, sicher, messbar, schnell und wartbar sein.</p></Reveal><Reveal className="tech-stack" delay={.1}>{["Domain", "Hosting", "DNS", "SSL", "Deployment", "SMTP", "Datenbank", "Tracking", "SEO", "GEO", "AEO", "CRO", "Performance", "Wartung", "Backups"].map((item) => <span key={item}>{item}</span>)}</Reveal></div><Reveal className="choice-bar"><div><strong>Sie entscheiden.</strong><span>Nur Website kaufen und selbst veröffentlichen – oder die technische Einrichtung direkt mitbuchen.</span></div><a href="#pakete">Optionen vergleichen <ArrowUpRight size={18} /></a></Reveal></section>
+        <section className="ai-section section-pad"><Reveal className="ai-title"><p className="kicker">Website mit KI?</p><h2>Erzeugen ist leicht. Verlässlich betreiben ist die eigentliche Arbeit.</h2></Reveal><div className="ai-answer"><Reveal><p className="answer-lead">KI kann Design und Code beschleunigen. Eine professionelle Website braucht trotzdem ein belastbares technisches Fundament.</p></Reveal><Reveal className="ai-detail" delay={.1}><p>Domain, Sicherheit, Messbarkeit, Ladezeit, E-Mail-Versand und Wartung müssen zusammen funktionieren. Sie entscheiden, ob Sie nur die Website übernehmen oder die technische Einrichtung direkt mitbuchen.</p><a className="editorial-link" href="#pakete">Optionen vergleichen <ArrowUpRight size={18} /></a></Reveal></div></section>
 
         <section className="process section-pad" id="prozess"><Reveal className="section-heading"><p className="kicker">Der Weg zur fertigen Lösung</p><h2>Vier klare Etappen.<br />Keine Blackbox.</h2></Reveal><div className="process-list">{[["01", "Verstehen", "Ziele, Zielgruppe, bestehende Systeme und echte Engpässe klären."], ["02", "Konzipieren", "Struktur, Nutzerwege, Inhalte und technische Lösung festlegen."], ["03", "Bauen", "Design und Entwicklung eng verzahnt umsetzen und laufend prüfen."], ["04", "Übergeben", "Sauber testen, verständlich dokumentieren und auf Wunsch live schalten."]].map(([n, title, text], i) => <Reveal className="process-row" delay={i * .06} key={n}><span>{n}</span><h3>{title}</h3><p>{text}</p><ArrowUpRight /></Reveal>)}</div></section>
 
