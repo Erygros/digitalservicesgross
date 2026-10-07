@@ -1,0 +1,11 @@
+<svg width="720" height="150" viewBox="0 0 720 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="12" y1="130" x2="128" y2="16" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#145C3B"/><stop offset=".58" stop-color="#2E8F57"/><stop offset="1" stop-color="#65C85A"/>
+    </linearGradient>
+  </defs>
+  <path d="M15 111V62L46 43L80 72V41L116 20V88L80 109L46 80V108L15 127V111Z" fill="url(#g)"/>
+  <path d="M27 103V68L45 57L80 86L105 71" stroke="#F7F8F7" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="145" y="88" font-family="Arial, sans-serif" font-weight="800" font-size="52" letter-spacing="-2.5" fill="#F7F8F7">Digital Service</text>
+  <text x="526" y="88" font-family="Arial, sans-serif" font-weight="800" font-size="52" letter-spacing="-2.5" fill="#65C85A">Gross</text>
+</svg>

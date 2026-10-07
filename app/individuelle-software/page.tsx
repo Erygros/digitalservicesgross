@@ -1,0 +1,2 @@
+import type { Metadata } from "next"; import { ServiceLanding } from "@/components/ServiceLanding"; import { servicePageMap } from "@/lib/servicePages";
+const service = servicePageMap["individuelle-software"]; export const metadata: Metadata = { title: service.title, description: service.description, alternates: { canonical: "/individuelle-software" } }; export default function Page() { return <ServiceLanding service={service} />; }
