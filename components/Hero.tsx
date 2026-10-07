@@ -14,10 +14,6 @@ export function Hero() {
     </video>
     <div className="hero-video-overlay" aria-hidden="true" />
 
-    <motion.p className="hero-studio-name" initial={reduceMotion ? false : { opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .8, delay: .15, ease: easing }}>
-      Digital Service Gross
-    </motion.p>
-
     <motion.div className="hero-editorial" initial={reduceMotion ? false : "hidden"} animate="visible" variants={{ hidden: {}, visible: { transition: { staggerChildren: .1, delayChildren: .22 } } }}>
       <div className="hero-editorial-copy">
         <motion.h1 variants={{ hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0, transition: { duration: .75, ease: easing } } }}>Websites, Webentwicklung und digitale Systeme für Unternehmen.</motion.h1>

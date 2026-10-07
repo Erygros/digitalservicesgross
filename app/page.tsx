@@ -53,8 +53,11 @@ export default function Home() {
       <main>
         <Hero />
         <section className="statement" aria-label="Positionierung">
-          <div className="statement-line" aria-hidden="true"><span>DESIGN</span><i /><span>TECHNIK</span><i /><span>WACHSTUM</span></div>
-          <Reveal className="statement-copy"><p className="kicker">Nicht nur eine schöne Oberfläche</p><h2>Eine gute Website ist <em>Vertrieb, System und Werkzeug</em> zugleich.</h2><p>Wir verbinden klare Gestaltung mit sauberer Technik und einer Struktur, die Menschen vom ersten Eindruck bis zur Anfrage führt.</p></Reveal>
+          <div className="statement-ambient" aria-hidden="true" />
+          <Reveal className="statement-copy">
+            <h2>Eine Website ist nicht nur Oberfläche. <span>Sie ist Vertrieb, System und Werkzeug zugleich.</span></h2>
+            <div className="statement-support"><p>Gestaltung, Technik und Inhalte greifen so ineinander, dass aus einem guten ersten Eindruck ein klarer Weg bis zur Anfrage wird.</p><a href="#leistungen">Leistungen ansehen <ArrowUpRight size={18} /></a></div>
+          </Reveal>
         </section>
 
         <section className="services section-pad" id="leistungen"><Reveal className="section-heading wide-heading"><p className="kicker">Leistungsspektrum</p><h2>Alles, was zwischen <span>gefunden werden</span> und <span>Auftrag gewinnen</span> passiert.</h2></Reveal><div className="service-grid">
