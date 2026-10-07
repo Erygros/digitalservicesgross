@@ -1,0 +1,2 @@
+import type { MetadataRoute } from "next";
+export default function manifest(): MetadataRoute.Manifest { return { name: "Digital Service Gross", short_name: "DSG", description: "Webdesign, digitale Systeme und individuelle Software.", start_url: "/", display: "standalone", background_color: "#F7F8F7", theme_color: "#0B2E22", icons: [{ src: "/favicon.svg", sizes: "any", type: "image/svg+xml" }] }; }
